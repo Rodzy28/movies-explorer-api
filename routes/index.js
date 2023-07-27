@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { createUserVerification, loginVerification } = require('../utils/verification');
 const userRoutes = require('./users');
-const cardRoutes = require('./cards');
+const movieRoutes = require('./movie');
 const { logIn, signOut, createUser } = require('../controllers/user');
 const auth = require('../middlewares/auth');
 const NotFoundError = require('../errors/NotFoundError');
@@ -13,7 +13,7 @@ router.use(auth);
 
 router.use('/signout', signOut);
 router.use('/users', userRoutes);
-router.use('/cards', cardRoutes);
+router.use('/movies', movieRoutes);
 router.use('/*', () => {
   throw new NotFoundError('Page Not Found! :(');
 });

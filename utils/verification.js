@@ -6,37 +6,44 @@ const reg = /^https?:\/\/[a-z0-9-._~:\\/?#[\]@!$&'()*+,;=]*\.[a-z0-9-._~:\\/?#[\
 const createUserVerification = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
-    avatar: Joi.string().regex(reg),
     email: Joi.string().required().email(),
-    password: Joi.string().required().min(8),
+    password: Joi.string().required(),
   }),
 });
 
 const loginVerification = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
-    password: Joi.string().required().min(8),
+    password: Joi.string().required(),
   }),
 });
 
 const updateUserByIdVerification = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
+    email: Joi.string().required().email(),
   }),
 });
 
-const createCardVerification = celebrate({
+const createMovieVerification = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30).required(),
-    link: Joi.string().required().regex(reg),
+    country: Joi.string().required(),
+    director: Joi.string().required(),
+    duration: Joi.string().required(),
+    year: Joi.string().required(),
+    description: Joi.string().required(),
+    image: Joi.string().required().regex(reg),
+    trailerLink: Joi.string().required().regex(reg),
+    thumbnail: Joi.string().required().regex(reg),
+    movieId: Joi.string().required(),
+    nameRU: Joi.string().required(),
+    nameEN: Joi.string().required(),
   }),
 });
 
-const likeDislikeAndDeleteVerification = celebrate({
+const deleteMovieVerification = celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().required().length(24).hex(),
+    _id: Joi.string().required().length(24).hex(),
   }),
 });
 
@@ -44,6 +51,6 @@ module.exports = {
   createUserVerification,
   loginVerification,
   updateUserByIdVerification,
-  createCardVerification,
-  likeDislikeAndDeleteVerification,
+  createMovieVerification,
+  deleteMovieVerification,
 };

@@ -1,7 +1,8 @@
 const router = require('express').Router();
+
 const {
-  createCardVerification,
-  likeDislikeAndDeleteVerification,
+  createMovieVerification,
+  deleteMovieVerification,
 } = require('../utils/verification');
 
 const {
@@ -11,6 +12,7 @@ const {
 } = require('../controllers/movie');
 
 router.get('/', getMovies);
-router.post('/', createCardVerification, createMovie);
-router.delete('/:moveId', likeDislikeAndDeleteVerification, deleteMovieById);
+router.post('/', createMovieVerification, createMovie);
+router.delete('/:_id', deleteMovieVerification, deleteMovieById);
+
 module.exports = router;

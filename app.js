@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
-const cors = require('cors');
+// const cors = require('cors');
 const limiter = require('./utils/rateLimit');
 const router = require('./routes');
 const errorHandler = require('./middlewares/errorHandler');
@@ -17,7 +17,7 @@ app.use(limiter);
 app.use(helmet());
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: 'https://rodzy28.nomoredomains.xyz', credentials: true }));
+// app.use(cors({ origin: 'https://rodzy28.nomoredomains.xyz', credentials: true }));
 
 mongoose.connect(DB_URL, {
   useNewUrlParser: true,

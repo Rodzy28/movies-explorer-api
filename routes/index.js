@@ -11,7 +11,7 @@ router.post('/signup', createUserVerification, createUser);
 
 router.use(auth);
 
-router.use('/signout', signOut);
+router.post('/signout', signOut);
 router.use('/users', userRoutes);
 router.use('/movies', movieRoutes);
 router.use('/*', () => {

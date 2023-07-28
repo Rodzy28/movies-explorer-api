@@ -1,6 +1,6 @@
 const { Joi, celebrate } = require('celebrate');
 
-const reg = /^https?:\/\/[a-z0-9а-я-._~:\\/?#[\]%@!$&'()*+,;=]*\.[a-z0-9а-я-._~:\\/?#[\]@%!$&'()*+,;=]*$/;
+const reg = /^https?:\/\/[a-z0-9а-я-._~:\\/?#[\]%@!$&'()*+,;=]*\.[a-z0-9а-я-._~:\\/?#[\]@%!$&'()*+,;=]*$/i;
 
 const createUserVerification = celebrate({
   body: Joi.object().keys({

@@ -17,7 +17,7 @@ app.use(limiter);
 app.use(helmet());
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: '*', credentials: true }));
+app.use(cors({ origin: true, credentials: true }));
 
 mongoose.connect(DB_URL, {
   useNewUrlParser: true,

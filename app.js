@@ -9,9 +9,14 @@ const limiter = require('./utils/rateLimit');
 const router = require('./routes');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const {
+  NODE_ENV,
+  DB_URL,
+  DB_URL_DEV,
+  PORT,
+} = require('./utils/configuration');
 
 const app = express();
-const { PORT, DB_URL } = process.env;
 
 app.use(limiter);
 app.use(helmet());
@@ -19,7 +24,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: true, credentials: true }));
 
-mongoose.connect(DB_URL, {
+mongoose.connect(NODE_ENV === 'production' ? DB_URL : DB_URL_DEV, {
   useNewUrlParser: true,
 });
 

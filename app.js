@@ -22,7 +22,7 @@ app.use(limiter);
 app.use(helmet());
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: 'https://rodzy28.nomoredomainsicu.ru', credentials: true }));
 
 mongoose.connect(NODE_ENV === 'production' ? DB_URL : DB_URL_DEV, {
   useNewUrlParser: true,

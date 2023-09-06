@@ -78,7 +78,7 @@ const logIn = (req, res, next) => {
 };
 
 const signOut = (req, res) => {
-  res.clearCookie('token', { domain: 'rodzy28.nomoredomainsicu.ru' })
+  res.clearCookie('token')
     .send({ message: 'Вы вышли из аккаунта' });
 };
 

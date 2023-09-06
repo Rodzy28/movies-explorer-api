@@ -78,7 +78,7 @@ const logIn = (req, res, next) => {
 };
 
 const signOut = (req, res) => {
-  res.clearCookie('token')
+  res.clearCookie('token', { sameSite: 'none', secure: true })
     .send({ message: 'Вы вышли из аккаунта' });
 };
 
